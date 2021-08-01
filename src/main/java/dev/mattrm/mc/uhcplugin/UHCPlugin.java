@@ -2,7 +2,9 @@ package dev.mattrm.mc.uhcplugin;
 
 import dev.mattrm.mc.gametools.Service;
 import dev.mattrm.mc.uhcplugin.commands.UHCCommands;
-import dev.mattrm.mc.uhcplugin.transition.GameManager;
+import dev.mattrm.mc.uhcplugin.game.GameManager;
+import dev.mattrm.mc.uhcplugin.overrides.AllOverrides;
+import dev.mattrm.mc.uhcplugin.settings.SettingsManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.annotation.dependency.Dependency;
@@ -20,6 +22,7 @@ public final class UHCPlugin extends JavaPlugin {
     public void onEnable() {
         registerServices();
         registerCommands();
+        AllOverrides.override(this);
     }
 
     @Override
@@ -29,7 +32,8 @@ public final class UHCPlugin extends JavaPlugin {
 
     private void registerServices() {
         Service[] services = new Service[]{
-            GameManager.getInstance()
+            GameManager.getInstance(),
+            SettingsManager.getInstance()
         };
 
         PluginManager pluginManager = this.getServer().getPluginManager();

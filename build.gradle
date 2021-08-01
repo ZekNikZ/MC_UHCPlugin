@@ -27,11 +27,11 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
     compileOnly 'org.spigotmc:plugin-annotations:1.2.3-SNAPSHOT'
     compileOnly 'com.sk89q.worldedit:worldedit-core:6.1.4-SNAPSHOT'
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:6.1.4-SNAPSHOT'
-    compileOnly files('../GameToolsLibrary/build/libs/gametools-1.0-SNAPSHOT.jar')
+    compileOnly files('../MC_GameToolsLibrary/build/libs/gametools-3.0-SNAPSHOT.jar')
     annotationProcessor 'org.spigotmc:plugin-annotations:1.2.3-SNAPSHOT'
 }
 //
