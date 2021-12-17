@@ -8,6 +8,7 @@ import dev.mattrm.mc.gametools.settings.IGameSetting;
 import dev.mattrm.mc.gametools.settings.impl.BooleanSetting;
 import dev.mattrm.mc.gametools.settings.impl.EnumSetting;
 import dev.mattrm.mc.gametools.settings.impl.IntRangeSetting;
+import dev.mattrm.mc.gametools.util.DataMaterials;
 import dev.mattrm.mc.gametools.util.ISB;
 import dev.mattrm.mc.gametools.util.ListUtils;
 import dev.mattrm.mc.gametools.util.Version;
@@ -62,7 +63,7 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_TIME_CYCLE, new EnumSetting<>(
             "Time Cycle",
             ListUtils.of("Determines how time works in the game."),
-            ISB.stack(Material.WATCH),
+            ISB.stack(Material.CLOCK),
             12,
             TimeCycle.class,
             TimeCycle.NORMAL
@@ -108,7 +109,7 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_THROWABLE_FIREBALLS, new BooleanSetting(
             "Throwable Fireballs",
             ListUtils.of("Determines if fireballs should be throwable."),
-            ISB.stack(Material.FIREBALL),
+            ISB.stack(Material.FIRE_CHARGE),
             true,
             15
         ));
@@ -129,13 +130,13 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_GOLDEN_HEADS, new BooleanSetting(
             "Golden Heads",
             ListUtils.of("Determines if golden heads will be craftable."),
-            ISB.stack(Material.SKULL_ITEM, (short) 3),
+            ISB.stack(Material.PLAYER_HEAD),
             true,
             18
         ));
 
         // Mobs
-        if (Version.is16()) {
+        if (Version.is17()) {
             setting(SETTING_SPAWN_PHANTOMS, new BooleanSetting(
                 "Allow Phantom Spawning",
                 ListUtils.of("Determines if phantoms will be allowed to spawn"),
@@ -146,7 +147,7 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_HOSTILE_MOBS, new BooleanSetting(
             "Allow Hostile Mob Spawning",
             ListUtils.of("Determines if hostile mobs will be allowed to spawn"),
-            ISB.stack(Material.SKULL_ITEM, (short) 2),
+            ISB.stack(Material.ZOMBIE_HEAD),
             true,
             11
         ));
@@ -194,7 +195,7 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_WORLDBORDER_DISTANCE_1, new IntRangeSetting(
             "Worldborder Size (Phase 1)",
             ListUtils.of("This determines the initial size of the worldborder."),
-            ISB.stack(Material.INK_SACK, DyeColor.LIME.getDyeData()),
+            ISB.stack(DataMaterials.get().limeDye()),
             0,
             2000,
             5000,
@@ -204,17 +205,17 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_WORLDBORDER_TIME_1, new IntRangeSetting(
             "Worldborder Time (Phase 1)",
             ListUtils.of("This determines the time it takes to get from worldborder phase 1 to phase 2."),
-            ISB.stack(Material.WATCH),
+            ISB.stack(Material.CLOCK),
             1,
-            10,
+            1, //10,
             120,
-            5,
+            1, //5,
             60
         ));
         setting(SETTING_WORLDBORDER_DISTANCE_2, new IntRangeSetting(
             "Worldborder Size (Phase 2)",
             ListUtils.of("This determines the second size of the worldborder."),
-            ISB.stack(Material.INK_SACK, DyeColor.LIME.getDyeData()),
+            ISB.stack(DataMaterials.get().limeDye()),
             2,
             100,
             3000,
@@ -224,7 +225,7 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_WORLDBORDER_TIME_2, new IntRangeSetting(
             "Worldborder Time (Phase 2)",
             ListUtils.of("This determines the time it takes to get from worldborder phase 2 to phase 3."),
-            ISB.stack(Material.WATCH),
+            ISB.stack(Material.CLOCK),
             3,
             0,
             60,
@@ -234,7 +235,7 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_WORLDBORDER_DISTANCE_3, new IntRangeSetting(
             "Worldborder Size (Phase 3)",
             ListUtils.of("This determines the third size of the worldborder.", "Set to 0 to not use a third phase."),
-            ISB.stack(Material.INK_SACK, DyeColor.LIME.getDyeData()),
+            ISB.stack(DataMaterials.get().limeDye()),
             4,
             100,
             2000,
@@ -244,7 +245,7 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_WORLDBORDER_TIME_3, new IntRangeSetting(
             "Worldborder Time (Phase 3)",
             ListUtils.of("This determines the time it takes to get from worldborder phase 2 to phase 3.", "Set to 0 to not use a third phase."),
-            ISB.stack(Material.WATCH),
+            ISB.stack(Material.CLOCK),
             5,
             0,
             60,
@@ -254,7 +255,7 @@ public class SettingsManager extends Service implements IDataManager {
         setting(SETTING_SUDDEN_DEATH_PARLAY_TIME, new IntRangeSetting(
             "Worldborder Parlay Time",
             ListUtils.of("This determines the time between the worldborder", "stopping moving and sudden beginning"),
-            ISB.stack(Material.WATCH),
+            ISB.stack(Material.CLOCK),
             6,
             0,
             20,

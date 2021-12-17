@@ -74,7 +74,7 @@ public class GameEventsListener implements Listener {
         Player player = event.getPlayer();
 
         // Fireball
-        if (material == Material.FIREBALL && SettingsManager.getInstance().throwableFireballs().get() && action == Action.RIGHT_CLICK_AIR) {
+        if (material == Material.FIRE_CHARGE && SettingsManager.getInstance().throwableFireballs().get() && action == Action.RIGHT_CLICK_AIR) {
             if (fireballCooldown.get(player.getUniqueId()) == null || System.currentTimeMillis() - fireballCooldown.get(player.getUniqueId()) > 1000) {
                 Fireball fireball = player.launchProjectile(Fireball.class);
                 fireball.setVelocity(fireball.getVelocity().multiply(2));
@@ -213,11 +213,11 @@ public class GameEventsListener implements Listener {
             Player killer = player.getKiller();
             if (killer != null) {
                 Location location = player.getLocation();
-                SkullMeta meta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
+                SkullMeta meta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.PLAYER_HEAD);
                 meta.setOwner(player.getName());
                 location.getWorld().dropItemNaturally(
                     location,
-                    ISB.material(Material.SKULL_ITEM, (short) 3)
+                    ISB.material(Material.PLAYER_HEAD)
                         .meta(meta)
                         .name(player.getName() + "'s Head")
                         .build()

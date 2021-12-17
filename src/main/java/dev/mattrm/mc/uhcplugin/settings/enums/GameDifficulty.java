@@ -6,10 +6,10 @@ import org.bukkit.Difficulty;
 import org.bukkit.Material;
 
 public enum GameDifficulty implements IGameSettingEnum {
-    @SettingOption(name = "Peaceful", item = Material.RED_ROSE, damage = 6)
+    @SettingOption(name = "Peaceful", item = Material.POPPY, damage = 6)
     PEACEFUL(Difficulty.PEACEFUL),
 
-    @SettingOption(name = "Easy", item = Material.WOOD_SWORD)
+    @SettingOption(name = "Easy", item = Material.WOODEN_SWORD)
     EASY(Difficulty.EASY),
 
     @SettingOption(name = "Normal", item = Material.STONE_SWORD)

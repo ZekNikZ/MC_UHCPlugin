@@ -8,6 +8,7 @@ import dev.mattrm.mc.uhcplugin.settings.SettingsManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.annotation.dependency.Dependency;
+import org.bukkit.plugin.java.annotation.plugin.ApiVersion;
 import org.bukkit.plugin.java.annotation.plugin.Plugin;
 import org.bukkit.plugin.java.annotation.plugin.author.Author;
 
@@ -15,6 +16,7 @@ import org.bukkit.plugin.java.annotation.plugin.author.Author;
 @Author("ZekNikZ")
 @Dependency("GameToolsLibrary")
 @Dependency("WorldEdit")
+@ApiVersion(ApiVersion.Target.v1_17)
 public final class UHCPlugin extends JavaPlugin {
     public static boolean test = false;
 

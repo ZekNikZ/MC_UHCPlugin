@@ -6,6 +6,7 @@ import dev.mattrm.mc.gametools.event.TeamChangeEvent;
 import dev.mattrm.mc.gametools.readyup.ReadyUpService;
 import dev.mattrm.mc.gametools.scoreboards.ScoreboardService;
 import dev.mattrm.mc.gametools.scoreboards.impl.StringValueEntry;
+import dev.mattrm.mc.gametools.settings.GameSettingsService;
 import dev.mattrm.mc.gametools.settings.impl.IntRangeSetting;
 import dev.mattrm.mc.gametools.teams.GameTeam;
 import dev.mattrm.mc.gametools.teams.TeamService;
@@ -13,6 +14,7 @@ import dev.mattrm.mc.gametools.timer.AbstractTimer;
 import dev.mattrm.mc.gametools.timer.GameStopwatch;
 import dev.mattrm.mc.gametools.util.ActionBarUtils;
 import dev.mattrm.mc.gametools.util.ListUtils;
+import dev.mattrm.mc.gametools.util.Sounds;
 import dev.mattrm.mc.gametools.world.WorldSyncService;
 import dev.mattrm.mc.uhcplugin.GameState;
 import dev.mattrm.mc.uhcplugin.lobby.SchematicLoader;
@@ -362,7 +364,7 @@ public class GameManager extends Service {
         this.timer.addTempHook((hookId) -> {
             int newWorldBorderSize = (int) WorldSyncService.getInstance().getWorldBorderSize();
 
-            if (newWorldBorderSize <= 400 && !hasSetToDay.get()) {
+            if (newWorldBorderSize <= 600 && !hasSetToDay.get()) {
                 SettingsManager.getInstance().timeCycle().set(TimeCycle.DAY_ONLY);
                 this.hasSetToDay.set(true);
             }
@@ -581,6 +583,10 @@ public class GameManager extends Service {
                 double z = player.getLocation().getZ();
                 double playerRadius = Math.max(Math.abs(x), Math.abs(z));
 
+                if (playerRadius <= SettingsManager.getInstance().worldborderDistances().get(SettingsManager.getInstance().worldborderDistances().size() - 1).get()) {
+                    return;
+                }
+
                 final int leeway = 20;
                 if (worldBorderRadius - playerRadius <= worldBorderSpeed * (60 + leeway)) {
                     ActionBarUtils.get().sendActionBarMessage(player, (dark ? ChatColor.DARK_RED : ChatColor.RED) + "The world border will pass you in less than 1 minute!");
@@ -603,7 +609,7 @@ public class GameManager extends Service {
     }
 
     public void playWarningSoundToPlayer(Player player) {
-        player.playSound(player.getLocation(), Sound.NOTE_PLING, 0.5f, 0.5f);
+        player.playSound(player.getLocation(), Sounds.get().notePling(), 0.5f, 0.5f);
     }
 
     public void handlePlayerDeath(Player player) {

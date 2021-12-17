@@ -1,5 +1,6 @@
 package dev.mattrm.mc.uhcplugin.util;
 
+import dev.mattrm.mc.gametools.util.Sounds;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -14,6 +15,6 @@ public class ChatUtils {
 
     public static void sendMessage(Player player, String message) {
         player.sendMessage(PREFIX + message);
-        player.playSound(player.getLocation(), Sound.NOTE_PLING, 1, 1);
+        player.playSound(player.getLocation(), Sounds.get().notePling(), 1, 1);
     }
 }

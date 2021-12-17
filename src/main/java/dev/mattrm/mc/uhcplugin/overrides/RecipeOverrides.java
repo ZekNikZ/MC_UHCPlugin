@@ -25,7 +25,7 @@ public class RecipeOverrides {
             )
                 .shape("###", "#*#", "###")
                 .setIngredient('#', Material.GOLD_INGOT)
-                .setIngredient('*', Material.SKULL_ITEM, 3)
+                .setIngredient('*', Material.PLAYER_HEAD)
         );
     }
 

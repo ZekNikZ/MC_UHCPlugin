@@ -5,12 +5,12 @@ import dev.mattrm.mc.gametools.settings.SettingOption;
 import org.bukkit.Material;
 
 public enum TimeCycle implements IGameSettingEnum {
-    @SettingOption(name = "Normal day/night cycle", item = Material.WATCH)
+    @SettingOption(name = "Normal day/night cycle", item = Material.CLOCK)
     NORMAL,
 
-    @SettingOption(name = "Day only", item = Material.DOUBLE_PLANT)
+    @SettingOption(name = "Day only", item = Material.SUNFLOWER)
     DAY_ONLY,
 
-    @SettingOption(name = "Night only", item = Material.WEB)
+    @SettingOption(name = "Night only", item = Material.COBWEB)
     NIGHT_ONLY
 }

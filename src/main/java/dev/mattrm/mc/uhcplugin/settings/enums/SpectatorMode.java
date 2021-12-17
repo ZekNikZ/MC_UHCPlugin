@@ -11,6 +11,6 @@ public enum SpectatorMode implements IGameSettingEnum {
     @SettingOption(name = "Spectators can see inventories", description = "Spectators can view player's inventories while spectating them", item = Material.DIAMOND_HELMET)
     SPECTATORS_SEE_INVENTORIES,
 
-    @SettingOption(name = "Team members can see inventories", description = "Spectators can view alive teammates' inventories while spectating them", item = Material.GOLD_HELMET)
+    @SettingOption(name = "Team members can see inventories", description = "Spectators can view alive teammates' inventories while spectating them", item = Material.GOLDEN_HELMET)
     TEAMS_SEE_INVENTORIES
 }

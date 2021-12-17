@@ -14,6 +14,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.RenderType;
 
 public class UHCScoreboards {
     private static boolean scoreboardTitleColor = false;
@@ -83,6 +84,7 @@ public class UHCScoreboards {
         Objective globalObj = globalScoreboard.getScoreboard().registerNewObjective("hp", "health");
         globalObj.setDisplayName("HP");
         globalObj.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+        globalObj.setRenderType(RenderType.HEARTS);
 
         // Competitor scoreboards
         GameManager.getInstance().getCompetitors().forEach(uuid -> {
